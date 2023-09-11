@@ -2,7 +2,7 @@
 
 # Result
 
-<img src="https://github.com/dongdongO/SEA-ME_Embedded/blob/main/DES_Instrument-Cluster/Images/raspberrypican.png" alt="Alt text" width="60%" height="60%"/>
+<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/raspberrypican.png" alt="Alt text" width="60%" height="60%"/>
 <br>  
 
 # Introduction

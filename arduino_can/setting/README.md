@@ -18,7 +18,7 @@
 
 Please refer to the above image and the Arduino's GPIO map for connections.
 
-<img src="https://github.com/dongdongO/SEA-ME_Embedded/blob/main/DES_Instrument-Cluster/Images/arduino_can_GPIO.png" alt="Alt text" width="60%" height="60%"/>
+<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/arduino_can_GPIO.png" alt="Alt text" width="60%" height="60%"/>
 
 # Software Setting
 

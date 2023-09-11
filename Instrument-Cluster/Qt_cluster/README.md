@@ -3,7 +3,7 @@
 ---
 
 # Result
-<img src="https://github.com/dongdongO/SEA-ME_Embedded/blob/main/DES_Instrument-Cluster/Images/cluster final.png" alt="Alt text" width="100%" height="100%"/>
+<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/cluster final.png" alt="Alt text" width="100%" height="100%"/>
 
 # **Introduction**
 

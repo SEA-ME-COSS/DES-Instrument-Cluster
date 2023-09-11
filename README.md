@@ -4,7 +4,7 @@
 
 # Result
 
-<img src="https://github.com/dongdongO/SEA-ME_Embedded/blob/main/DES_Instrument-Cluster/Images/final_result.gif" alt="Alt text" width="100%" height="100%"/>
+<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/final_result.gif" alt="Alt text" width="100%" height="100%"/>
 
 # Introduction
 
@@ -16,7 +16,7 @@ Through this project, you are able to have a practical understanding of IPC, and
 
 # Architecture
 
-<img src="https://github.com/dongdongO/SEA-ME_Embedded/blob/main/DES_Instrument-Cluster/Images/software aritecture.png" alt="Alt text" width="120%" height="120%"/>
+<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/software aritecture.png" alt="Alt text" width="120%" height="120%"/>
 
 # Setting
 

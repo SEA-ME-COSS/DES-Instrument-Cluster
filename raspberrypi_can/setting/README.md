@@ -16,7 +16,7 @@
 
 ### Connect
 
-<img src="https://github.com/dongdongO/SEA-ME_Embedded/blob/main/DES_Instrument-Cluster/Images/arduino_rasp_pin.png" alt="Alt text" width="100%" height="100%"/>
+<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/arduino_rasp_pin.png" alt="Alt text" width="100%" height="100%"/>
 
 1. Power Up: Ensure both the Arduino and Raspberry Pi 4 are powered off. Connect their power supplies.
 2. Set Up CAN Interfaces: Attach the CAN module/shield to the Arduino and the CAN hat/module to the Raspberry Pi 4.
@@ -39,7 +39,7 @@ sudo raspi-config
 
 Choose Interfacing Options -> SPI -> Yes to enable the SPI interface.
 
-<img src="https://github.com/dongdongO/SEA-ME_Embedded/blob/main/DES_Instrument-Cluster/Images/spisetting.png" alt="Alt text" width="70%" height="70%"/>
+<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/spisetting.png" alt="Alt text" width="70%" height="70%"/>
 
 
 
@@ -134,7 +134,7 @@ sudo reboot
 sudo dmesg | grep spi
 ```
 
-<img src="https://github.com/dongdongO/SEA-ME_Embedded/blob/main/DES_Instrument-Cluster/Images/checkspi.png" alt="Alt text" width="70%" height="70%"/>
+<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/checkspi.png" alt="Alt text" width="70%" height="70%"/>
 
 
 * Set up CAN:
@@ -155,7 +155,7 @@ sudo ifconfig can1 txqueuelen 65536
 ifconfig
 ```
 
-<img src="https://github.com/dongdongO/SEA-ME_Embedded/blob/main/DES_Instrument-Cluster/Images/checkifconfig.png" alt="Alt text" width="70%" height="70%"/>
+<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/checkifconfig.png" alt="Alt text" width="70%" height="70%"/>
 <br>  
 
 ### Testing
@@ -177,7 +177,7 @@ Another terminal input sends the CAN1 data command:
 cansend can1 000#11.22.33.44
 ```
 
-<img src="https://github.com/dongdongO/SEA-ME_Embedded/blob/main/DES_Instrument-Cluster/Images/checkcan.png" alt="Alt text" width="70%" height="70%"/>
+<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/checkcan.png" alt="Alt text" width="70%" height="70%"/>
 
 
 If you have two 2-CH CAN HAT on hand, you can directly connect CAN_H and CAN_L two by two. The effect is the same as the above, pay attention to match the communication rate, identify the ID, and output the interface serial number.

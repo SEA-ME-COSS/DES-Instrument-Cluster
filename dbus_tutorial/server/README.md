@@ -5,7 +5,7 @@
 # Introduction
 D-Bus (Desktop Bus) is an inter-process communication (IPC) mechanism that allows multiple processes to communicate with one another in a seamless and efficient manner. Originally developed for desktop environments, it's now widely used in various software systems, especially in Linux-based platforms. Here are some foundational concepts to understand:
 
-<img src="https://github.com/dongdongO/SEA-ME_Embedded/blob/main/DES_Instrument-Cluster/Images/dbusinfo.png" alt="Alt text" width="100%" height="100%"/>
+<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/dbusinfo.png" alt="Alt text" width="100%" height="100%"/>
 
 ### Interface:
 
