@@ -1,8 +1,10 @@
 # Setting
 
-## Hardware Setting
+---
 
-### Requirements
+# Hardware Setting
+
+## Requirements
 
 * Arduino Uno: Any Arduino board with CAN capability or with a CAN shield/module.
 * Raspberry Pi 4: Ensure it's updated to the latest firmware and OS.
@@ -12,11 +14,10 @@
 * Speed Sensor : To get speed data
 * Power Supply: Appropriate for both Raspberry Pi and Arduino.
 * (Optional) Breadboard: For easy prototyping.  
-<br>  
 
-### Connect
+## Connect
 
-<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/arduino_rasp_pin.png" alt="Alt text" width="100%" height="100%"/>
+<img src="../../images/arduino_rasp_pin.png" alt="Alt text" width="100%" height="100%"/>
 
 1. Power Up: Ensure both the Arduino and Raspberry Pi 4 are powered off. Connect their power supplies.
 2. Set Up CAN Interfaces: Attach the CAN module/shield to the Arduino and the CAN hat/module to the Raspberry Pi 4.
@@ -25,12 +26,11 @@
 5. Power On: Once all connections are secured, power on both devices. Ensure that there's no short circuit or incorrect connections.  
 <br>  
 
-Note: Before running any software, always double-check your connections to prevent any damage to your devices.
-<br>  
+**Note: Before running any software, always double-check your connections to prevent any damage to your devices.**
 
-## Software Setting
+# Software Setting
 
-### Enable SPI interface
+## Enable SPI interface
 Open the terminal, and use the command to enter the configuration page.
 
 ```bash
@@ -39,7 +39,7 @@ sudo raspi-config
 
 Choose Interfacing Options -> SPI -> Yes to enable the SPI interface.
 
-<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/spisetting.png" alt="Alt text" width="70%" height="70%"/>
+<img src="../../images/spisetting.png" alt="Alt text" width="70%" height="70%"/>
 
 
 
@@ -50,9 +50,8 @@ sudo reboot
 ```
 
 Please make sure that the SPI interface was not used by other devices, you can check in the /boot/config.txt.
-<br>  
 
-### Install libraries
+## Install libraries
 * bcm2835
 
 Open the terminal and run the commands below to install the bcm2835 library:
@@ -102,9 +101,8 @@ sudo pip3 install RPi.GPIO
 sudo pip3 install spidev 
 sudo pip3 install python-can
 ```
-<br>  
 
-### Preparation
+## Preparation
 * Insert the module into Raspberry Pi, and then modify the config.txt file:
 
 ```bash
@@ -134,7 +132,7 @@ sudo reboot
 sudo dmesg | grep spi
 ```
 
-<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/checkspi.png" alt="Alt text" width="70%" height="70%"/>
+<img src="../../images/checkspi.png" alt="Alt text" width="70%" height="70%"/>
 
 
 * Set up CAN:
@@ -155,10 +153,9 @@ sudo ifconfig can1 txqueuelen 65536
 ifconfig
 ```
 
-<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/checkifconfig.png" alt="Alt text" width="70%" height="70%"/>
-<br>  
+<img src="../../images/checkifconfig.png" alt="Alt text" width="70%" height="70%"/>
 
-### Testing
+## Testing
 If there is one 2-CH CAN HAT on hand, you can connect CAN0_H and CAN1_H and CAN0_L and CAN1_L of the module:
 
 * install can-utils:
@@ -177,13 +174,12 @@ Another terminal input sends the CAN1 data command:
 cansend can1 000#11.22.33.44
 ```
 
-<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/checkcan.png" alt="Alt text" width="70%" height="70%"/>
+<img src="../../images/checkcan.png" alt="Alt text" width="90%" height="90%"/>
 
 
 If you have two 2-CH CAN HAT on hand, you can directly connect CAN_H and CAN_L two by two. The effect is the same as the above, pay attention to match the communication rate, identify the ID, and output the interface serial number.
-<br>  
 
 # References
 
-- [CAN Software Setting](https://www.waveshare.com/wiki/2-CH_CAN_HAT)
+- [CAN Software Setting](https://www.waveshare.com/wiki/2-CH_CAN_FD_HAT)
 - [Speed Sensor](https://srituhobby.com/ir-infrared-speed-sensor-with-arduino-how-does-work-ir-speed-sensor/)

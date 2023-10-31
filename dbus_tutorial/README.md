@@ -23,9 +23,9 @@ To be more specific, our objectives are:
 
 To run the code, ensure you have the required libraries and dependencies installed.
 
-Follow the setting README.
+Follow the setting [README](./setting/).
 
-### client:
+## client:
 
 - pydbus-client.py : Contains the Python implementation of a D-Bus client using the dbus module.
 
@@ -40,7 +40,7 @@ make
 ./add-client_execution
 ```
 
-### server:
+## server:
 
 - pydbus-server.py: Contains the Python implementation of a D-Bus server using the dbus module.
 

@@ -1,31 +1,27 @@
 # **DES Project - Instrument Cluster**
 PiRacer instrument cluster Qt application running on RPi and receiving speed data from a speed sensor via CAN  
-</br>
+
+---
 
 # Result
 
-<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/final_result.gif" alt="Alt text" width="100%" height="100%"/>
-</br>
+<img src="../images/final_result.gif" alt="Alt text" width="100%" height="100%"/>
 
-## Introduction
+# Introduction
 This repo is the final version of a project to create a vehicle instrument cluster for embedded use on Raspberry Pi.  
 
 By connecting the Arduino and the speed sensor, the speed information of the vehicle was obtained and transferred to the Raspberry Pi through CAN. Then, a multi-thread was implemented using a total of two threads: one thread that reads the data and one thread that puts the read data into dbus, and put the information into dbus. Finally, the project was completed by transferring the Qt Instrument cluster compiled to the architecture of the Raspberry Pi by cross-compilation to the Raspberry Pi.  
 
 Through this project, you are able to have a practical understanding of IPC, and you can understand the overall concept of embedded.
 
-</br>
-
-## Architecture
+# Architecture
 
 
-<img src="https://github.com/SEA-ME-COSS/DES-Instrument-Cluster/blob/main/Images/software aritecture.png" alt="Alt text" width="120%" height="120%"/>
-</br>
+<img src="../images/software aritecture.png" alt="Alt text" width="120%" height="120%"/>
 
+# Requirements
 
-## Requirements
-
-### Raspberry Pi 4B
+## Raspberry Pi 4B
 
 - Raspberry Pi OS Lite 64bit (Linux 6.1 kernel)
 - 2-Channel CAN-BUS(FD) Shield for Raspberry Pi (MCP2518FD)
@@ -33,12 +29,12 @@ Through this project, you are able to have a practical understanding of IPC, and
 - PiRacer AI Kit (PiRacer Standard)
 - Joystick
 
-### Arduino UNO
+## Arduino UNO
 
 - CAN-BUS Shield V2.0 (MCP2515)
 - Speed Sensor (LM393)
 
-### Tools
+## Tools
 
 - Qt Creator 4.15.0 (with qmake)
 - Qt 5.15.0
@@ -46,23 +42,11 @@ Through this project, you are able to have a practical understanding of IPC, and
 - Arduino IDE
 - Raspberry Pi Imager
 - VI Editor
-</br>
 
-## Usage
+# Usage
 
-Just run run_dashboard.sh implemented in the parent folder of this folder.
+After finishing the [setting](./setting/), just run run_dashboard.sh implemented in the [parent folder](../) of this folder.
 
 ```bash
 sh run_dashboard.sh
 ```
-
----
-
-## Table of Contents
-### 1. [Settings](./setting/HardwareSettings.md)
-### 2. [RaspberryPi](./setting/RaspberryPi4.md)
-### 3. [Qt Creator Configuration](./setting/QtCreatorConfiguration.md)
-### 4. [Cross Compile](./setting/CrossCompile.md)
-### 5. [CAN Communication with CAN-HAT](./arduino_speedsensor/README.md)
-### 6. [Dbus](./dbus_clients/README.md)
-### 7. [Qt with QML](./Qt_cluster/README.md)

@@ -6,56 +6,55 @@
 #include <ctype.h>
 #include <dbus/dbus.h>
 
-
-// 이름 정하기
-// D-Bus 인터페이스 이름을 상수로 선언
+// Define names
+// Declare D-Bus interface name as a constant
 const char *const INTERFACE_NAME = "in.softprayog.dbus_example";
-// 서버의 D-Bus 이름을 상수로 선언
+// Declare the D-Bus name of the server as a constant
 const char *const SERVER_BUS_NAME = "in.softprayog.add_server";
-// 서버의 D-Bus 오브젝트 경로를 상수로 선언
+// Declare the D-Bus object path of the server as a constant
 const char *const SERVER_OBJECT_PATH_NAME = "/in/softprayog/adder";
-// 메소드 이름을 상수로 선언
+// Declare the method name as a constant
 const char *const METHOD_NAME = "add_numbers";
 
-DBusError dbus_error; // D-Bus 에러를 처리하기 위한 DBusError 인스턴스
-void print_dbus_error (char *str); // D-Bus 에러 출력 함수 선언
-// 서버 메세지 핸들러 함수 선언
+DBusError dbus_error; // Instance of DBusError to handle D-Bus errors
+void print_dbus_error (char *str); // Declaration of the D-Bus error printing function
+// Declaration of the server message handler function
 DBusHandlerResult server_handle_message (DBusConnection *conn, DBusMessage *message, void *user_data);
 
-// 서버 버추얼 테이블 초기화
+// Initialize the server virtual table
 DBusObjectPathVTable server_vtable = {
-    .message_function = server_handle_message // 메세지 핸들러 함수 설정
+    .message_function = server_handle_message // Set the message handler function
 };
 
 int main (int argc, char **argv)
 {
-    DBusConnection *conn; // D-Bus 연결을 위한 포인터
-    int ret; // 함수 호출 결과를 저장하는 변수
+    DBusConnection *conn; // Pointer for D-Bus connection
+    int ret; // Variable to store function call results
 
-    dbus_error_init (&dbus_error); // dbus_error 초기화
+    dbus_error_init (&dbus_error); // Initialize dbus_error
 
-    conn = dbus_bus_get (DBUS_BUS_SESSION, &dbus_error); // D-Bus에 연결하고 그 연결을 가리키는 포인터 얻기
+    conn = dbus_bus_get (DBUS_BUS_SESSION, &dbus_error); // Connect to D-Bus and get the pointer pointing to that connection
 
-    if (dbus_error_is_set (&dbus_error)) // D-Bus 연결 중에 오류가 발생하면 에러 메시지를 출력하고 종료
+    if (dbus_error_is_set (&dbus_error)) // Print the error message and exit if there's an error while connecting to D-Bus
         print_dbus_error ("dbus_bus_get");
 
-    if (!conn) // D-Bus의 반환값이 정당한지 확인. 에러처리와 반환값 검증은 다른것
+    if (!conn) // Check the return value of D-Bus. Error handling and return value validation are different
         exit (1);
 
-    // 같은 이름의 SERVER_BUS_NAME이 있는지 확인. 없다면 통과, 같은게 있다면 계속해서 시도
+    // Check for the existence of SERVER_BUS_NAME with the same name. Pass if it doesn't exist, keep trying if it does
     while (1) {
-        ret = dbus_bus_request_name (conn, SERVER_BUS_NAME, 0, &dbus_error); // D-Bus에서 이름을 요청
+        ret = dbus_bus_request_name (conn, SERVER_BUS_NAME, 0, &dbus_error); // Request a name from D-Bus
 
         if (ret == DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER) 
-           break; // 이름 요청이 성공하면 루프 종료
+           break; // Exit the loop if name request is successful
 
         if (ret == DBUS_REQUEST_NAME_REPLY_IN_QUEUE) {
            fprintf (stderr, "Waiting for the bus ... \n");
-           sleep (1); // 요청이 대기열에 있으면 1초 대기
+           sleep (1); // Wait for 1 second if the request is in the queue
            continue;
         }
         if (dbus_error_is_set (&dbus_error))
-           print_dbus_error ("dbus_bus_request_name"); // 지금까지 에러가 있는지 확인
+           print_dbus_error ("dbus_bus_request_name"); // Check for errors so far
     }
 
     if (dbus_connection_register_object_path (conn, SERVER_OBJECT_PATH_NAME, 
@@ -64,7 +63,7 @@ int main (int argc, char **argv)
         exit (1);
     }
 
-    // listen to messages from dbus
+    // Listen to messages from dbus
     while (1) {
         dbus_connection_read_write_dispatch (conn, -1);
     }
@@ -72,50 +71,50 @@ int main (int argc, char **argv)
     return 0;
 }
 
-// D-Bus 에러 출력 함수
+// Function to print D-Bus errors
 void print_dbus_error (char *str) 
 {
     fprintf (stderr, "%s: %s\n", str, dbus_error.message);
     dbus_error_free (&dbus_error);
 }
 
-DBusHandlerResult server_handle_message (DBusConnection *conn, DBusMessage *message, void *user_data) // 서버 메시지 핸들러 함수 정의
+DBusHandlerResult server_handle_message (DBusConnection *conn, DBusMessage *message, void *user_data) // Definition of server message handler function
 {
-    // 받아온 메세지, INTERFACCE_NAME, METHOD_NAME이 같다면
+    // If the received message has the same INTERFACE_NAME and METHOD_NAME
     if (dbus_message_is_method_call (message, INTERFACE_NAME, METHOD_NAME)) {
-        DBusMessageIter iter; // DBusMessageIter 객체 선언 -> add-client 확인
-        char *msg; // 문자열 포인터 선언
+        DBusMessageIter iter; // Declare DBusMessageIter object
+        char *msg; // Declare string pointer
 
-        dbus_message_iter_init (message, &iter); // 메시지 반복자 초기화
+        dbus_message_iter_init (message, &iter); // Initialize message iterator
 
-        if (dbus_message_iter_get_arg_type (&iter) == DBUS_TYPE_STRING) { // 반복자가 가리키는 인자의 타입이 문자열이면
-            dbus_message_iter_get_basic (&iter, &msg); // 인자 값을 가져와 msg에 할당
+        if (dbus_message_iter_get_arg_type (&iter) == DBUS_TYPE_STRING) { // If the argument type pointed by the iterator is string
+            dbus_message_iter_get_basic (&iter, &msg); // Get the argument value and assign it to msg
         }
 
-        printf("Received: %s\n", msg); // 받은 메시지 출력
+        printf("Received: %s\n", msg); // Print the received message
 
-        DBusMessage *reply; // DBusMessage 객체 포인터 선언
+        DBusMessage *reply; // Declare a DBusMessage object pointer
 
-        if ((reply = dbus_message_new_method_return (message)) == NULL) { // 메서드 반환 메시지를 생성하는데 실패하면
-            fprintf (stderr, "Error in dbus_message_new_method_return\n"); // 에러 메시지 출력
-            exit (1); // 프로그램 종료
+        if ((reply = dbus_message_new_method_return (message)) == NULL) { // Print error message and exit if failed to create a method return message
+            fprintf (stderr, "Error in dbus_message_new_method_return\n");
+            exit (1);
         }
 
-        if (!dbus_message_append_args (reply, DBUS_TYPE_STRING, &msg, DBUS_TYPE_INVALID)) { // 메시지에 인자를 추가하는데 실패하면
-            fprintf (stderr, "Error in dbus_message_append_args\n"); // 에러 메시지 출력
-            exit (1); // 프로그램 종료
+        if (!dbus_message_append_args (reply, DBUS_TYPE_STRING, &msg, DBUS_TYPE_INVALID)) { // Print error message and exit if failed to add arguments to the message
+            fprintf (stderr, "Error in dbus_message_append_args\n");
+            exit (1);
         }
 
-        if (!dbus_connection_send (conn, reply, NULL)) { // 메시지를 전송하는데 실패하면
-            fprintf (stderr, "Error in dbus_connection_send\n"); // 에러 메시지 출력
-            exit (1); // 프로그램 종료
+        if (!dbus_connection_send (conn, reply, NULL)) { // Print error message and exit if failed to send the message
+            fprintf (stderr, "Error in dbus_connection_send\n");
+            exit (1);
         }
-        dbus_connection_flush (conn); // 모든 펜딩 중인 메시지를 버스로 전송
+        dbus_connection_flush (conn); // Send all pending messages to the bus
 
-        dbus_message_unref (reply); // 메시지에 대한 참조를 해제
+        dbus_message_unref (reply); // Release the reference to the message
 
-        return DBUS_HANDLER_RESULT_HANDLED; // 메시지 처리 완료를 반환
+        return DBUS_HANDLER_RESULT_HANDLED; // Return that the message has been handled
     }
 
-    return DBUS_HANDLER_RESULT_NOT_YET_HANDLED; // 메시지 처리되지 않음을 반환
+    return DBUS_HANDLER_RESULT_NOT_YET_HANDLED; // Return that the message has not been handled yet
 }

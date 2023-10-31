@@ -26,7 +26,7 @@ By accomplishing these objectives, the project will not only verify the efficacy
 
 # Usage
 
-Proceed with the settings according to the README file in the setting folder.
+Proceed with the settings according to the [README file](./setting/) in the setting folder.
 
 Additionally, if you want to communicate data from the speed sensor, please use the 'speedwrite' and 'speedread' codes.
 

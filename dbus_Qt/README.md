@@ -22,7 +22,7 @@ Specific objectives include:
 
 The chosen Qt compiler version is 5.15.0, and the Qt Creator version is 4.15.0.
 
-Follow the instructions in the settings folder to create an environment like ours.
+Follow the instructions in the [settings folder](./setting/) to create an environment like ours.
 
 Then, execute the codes in the sender folder as well.
 

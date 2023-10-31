@@ -4,7 +4,6 @@
 2. **Period:** It refers to the time between two consecutive pulses. For instance, if pulses occur every 1ms, then the period is 1ms.  
 
 3. **Frequency:** It denotes the number of pulses in a unit of time. It can be calculated as the inverse of the period. For example, if the period is 1ms, then the frequency is 1000Hz or 1kHz.  
-<br>  
 
 # How the Code Works:
 1. **Detecting Pulses:** The attachInterrupt() function is used to detect pulses from the sensor. Every time a pulse is generated, the Pulse_Event() function is invoked.  
@@ -14,7 +13,6 @@
 3. **Calculating Frequency:** Within the main loop(), the frequency (FrequencyRaw) is calculated using the average period (PeriodAverage).  
 
 4. **Calculating RPM:** As we know the number of pulses per revolution (PulsesPerRevolution), the RPM can be determined using the frequency. This frequency is multiplied by 60 to convert it to revolutions per minute and then divided by the number of pulses per revolution.  
-<br>  
 
 # How Does This Represent Speed?
 Frankly, this code isn't directly measuring "speed." It's measuring the revolutions per minute (RPM), which indicates how many times a wheel rotates in a minute.  
@@ -22,7 +20,7 @@ Frankly, this code isn't directly measuring "speed." It's measuring the revoluti
 If you know the diameter or circumference of the wheel, you can calculate the actual speed (e.g., km/h or m/s) using the RPM. This calculation would follow the formula:  
 
 \[ \text{Speed} = \text{RPM} \times \text{Circumference} \]  
-<br>  
+<br/>  
 
 For instance, if the wheel's circumference is 2m and the RPM is 30, the speed would be **'30 x 2 = 60m/min'** or **'1m/s'**.  
 

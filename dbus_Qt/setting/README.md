@@ -14,7 +14,7 @@
 
 ## Compile
 
-### You can use "senders" by following [dbus-tutorial](https://github.com/dongdongO/SEA-ME_Embedded/DES_Instrument-Cluster/dbus_tutorial/)
+### You can use "senders" by following [dbus-tutorial](../../dbus_tutorial/)
 
 ### Before you compile Qt program, you have to update .xml file to your .h file
 
