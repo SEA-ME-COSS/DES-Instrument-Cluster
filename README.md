@@ -64,7 +64,7 @@ sh run_dashboard.shß
 1. [Arduino CAN communication](./arduino_can/)
 2. [RaspberryPi CAN communication](./raspberrypi_can/)
 3. [DBus tutorial](./dbus_tutorial/)
-4. [DBus with Qt](./dbus_Qt/)ß
+4. [DBus with Qt](./dbus_Qt/)
 5. [Instrument Cluster](./Instrument-Cluster/)
 
 # References
@@ -79,6 +79,7 @@ sh run_dashboard.shß
 8. Raspberry Pi Foundation (2021). Raspberry Pi Hardware Reference. Available at: https://www.raspberrypi.org/documentation/hardware/raspberrypi/
 9. R. Davis (2016). “Agile Estimating and Planning”. Prentice Hall.
 10. I. Sommerville (2011). “Software Engineering”. Addison-Wesley.
+<br/>  
 
 Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
